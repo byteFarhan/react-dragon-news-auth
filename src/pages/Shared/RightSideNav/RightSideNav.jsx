@@ -10,7 +10,7 @@ import qZone2 from "../../../assets/qZone2.png";
 import qZone3 from "../../../assets/qZone3.png";
 const RightSideNav = () => {
   return (
-    <div className="mx-auto space-y-8 md:w-3/4 lg:w-full">
+    <div className="space-y-8 md:mx-auto md:w-3/4 lg:w-full">
       <div className="space-y-2">
         <h1 className="my-5 text-3xl font-semibold ">Login with</h1>
         <button className="flex items-center justify-center w-full gap-2 py-2 text-xl font-medium text-center text-blue-500 border-2 border-blue-500 rounded-lg">
