@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 
@@ -13,6 +15,12 @@ const AuthProvider = ({ children }) => {
   const userRegistation = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  const UserLogin = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -22,7 +30,7 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   }, []);
-  const authInfo = { userRegistation, user };
+  const authInfo = { user, userRegistation, UserLogin, resetPassword };
   //   console.log(user);
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
